@@ -39,9 +39,13 @@ students.phone, classroom.name from students join
 classroom on students.classRoomId = classroom.id;
 select * from students;
 
- SELECT students.id,
-students.name,
-students.dateOfBirth, students.email, students.address,
-students.phone,students.classRoomId ,classroom.name from students join 
-classroom on students.classRoomId = classroom.id
-where students.id = 3;
+ SELECT s.id, 
+ s.name,
+s.dateOfBirth, s.email, s.address,
+s.phone,s.classRoomId ,c.name from students s join 
+classroom c on s.classRoomId = c.id
+where s.id = 3;
+
+SELECT s.id, s.name, s.dateOfBirth, s.email, s.address, s.phone, c.name FROM students s JOIN classroom c ON c.id = s.classRoomId WHERE s.name LIKE "%C%" ;
+
+UPDATE students JOIN classroom ON students.classRoomId = classroom.id SET students.name = "Trung", students.dateOfBirth = "1994-11-03", students.email = "nbt@gmail.com", students.address = "Ha Noi", students.phone = "013457898", students.classRoomId = 3 WHERE students.id = 7;
