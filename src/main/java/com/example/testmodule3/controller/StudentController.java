@@ -7,6 +7,7 @@ import com.example.testmodule3.model.StudentModel;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -76,13 +77,10 @@ public class StudentController {
         LocalDate dateOfBirth = LocalDate.parse(req.getParameter("dateOfBirth"));
         String address = req.getParameter("address");
         String phone = req.getParameter("phone");
-        String classroom = req.getParameter("classRoom");
+        int classroom = Integer.parseInt(req.getParameter("class"));
+        System.out.println(classroom);
         Student student = new Student(id,name,dateOfBirth,email,address,phone,classroom);
         studentDAO.editStudent(student);
-        System.out.println(student);
-        List<Student> list =  studentDAO.getAllStudent();
-        req.setAttribute("list",list);
-        RequestDispatcher dispatcher = req.getRequestDispatcher("view/list.jsp");
-        dispatcher.forward(req,resp);
+        resp.sendRedirect("/student");
     }
 }

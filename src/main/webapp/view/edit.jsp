@@ -47,15 +47,12 @@
                                 <div class="form-group">
                                     <label>Class</label>
                                     <select class="form-control form-control-lg" name="class" required>
-                                        <%--                                        <option <c:if test="${student.getClassRoomId() eq className.getId()}"> selected</c:if> value="${student.getClassRoomId()}">${className.getName()}</option>--%>
-                                        <%--                                        <c:forEach items="${className}" var="classRoom">--%>
-                                        <%--                                            <option value="${classRoom.getId()}">${classRoom.getName()}</option>--%>
-                                        <%--                                        </c:forEach>--%>
-                                        47: <c:forEach items="${className}" var="classroom">
-                                        48:
-                                        <option value="${student.getClassRoomId()}"
-                                                <c:if test="${student.getClassRoomId() eq classroom.getId()}">selected</c:if>>${classroom.getName()}</option>
-                                        49: </c:forEach>
+                                        <option value="${student.getClassRoomId()}" selected>${student.getClassRoomName()}</option>
+                                        <c:forEach items="${className}" var="classNames">
+                                            <c:if test="${student.getClassRoomId() != classNames.getId()}">
+                                            <option value="${classNames.getId()}">${classNames.getName()}</option>
+                                            </c:if>
+                                        </c:forEach>
                                     </select>
                                 </div>
                                 <div class="text-center mt-3">
